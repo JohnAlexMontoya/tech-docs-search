@@ -2,6 +2,7 @@ import { Injectable, OnModuleDestroy } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import type { DocumentStatusEvent } from '@tech-docs/shared';
 import { Redis } from 'ioredis';
+import { redisOptions } from '../../config/redis.config';
 
 export const DOCUMENT_EVENTS_CHANNEL = 'documents:status';
 
@@ -14,10 +15,7 @@ export class DocumentEventsPublisher implements OnModuleDestroy {
   private readonly redis: Redis;
 
   constructor(config: ConfigService) {
-    this.redis = new Redis({
-      host: config.get<string>('REDIS_HOST', 'localhost'),
-      port: Number(config.get('REDIS_PORT', 6379)),
-    });
+    this.redis = new Redis(redisOptions(config));
   }
 
   async publish(event: DocumentStatusEvent): Promise<void> {
