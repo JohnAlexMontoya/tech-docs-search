@@ -2,15 +2,12 @@ import {
   Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany,
   ManyToOne, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn,
 } from 'typeorm';
+import type { DocumentStatus } from '@tech-docs/shared';
 import { CategoryEntity } from './category.entity';
 import { TagEntity } from './tag.entity';
 import { DocumentContentEntity } from './document-content.entity';
 
-export enum DocumentStatus {
-  PROCESANDO = 'PROCESANDO',
-  INDEXADO = 'INDEXADO',
-  ERROR = 'ERROR',
-}
+export const DOCUMENT_STATUSES: DocumentStatus[] = ['PROCESANDO', 'INDEXADO', 'ERROR'];
 
 @Entity('documents')
 export class DocumentEntity {
@@ -56,7 +53,7 @@ export class DocumentEntity {
   @Column({ name: 'storage_path', type: 'varchar', length: 500 })
   storagePath!: string;
 
-  @Column({ type: 'enum', enum: DocumentStatus, enumName: 'document_status', default: DocumentStatus.PROCESANDO })
+  @Column({ type: 'enum', enum: DOCUMENT_STATUSES, enumName: 'document_status', default: 'PROCESANDO' })
   status!: DocumentStatus;
 
   @Column({ name: 'error_message', type: 'text', nullable: true })
