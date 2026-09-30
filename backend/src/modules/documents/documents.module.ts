@@ -5,6 +5,7 @@ import { MulterModule } from '@nestjs/platform-express';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DOCUMENT_QUEUE } from '../processing/processing.constants';
 import { DocumentsController, MAX_BATCH_FILES } from './documents.controller';
+import { DocumentsQueryService } from './documents-query.service';
 import { DocumentsService } from './documents.service';
 import { DocumentEntity } from './entities/document.entity';
 import { FileStorageService } from './file-storage.service';
@@ -24,7 +25,7 @@ import { FileStorageService } from './file-storage.service';
     }),
   ],
   controllers: [DocumentsController],
-  providers: [DocumentsService, FileStorageService],
+  providers: [DocumentsService, DocumentsQueryService, FileStorageService],
   exports: [FileStorageService],
 })
 export class DocumentsModule {}

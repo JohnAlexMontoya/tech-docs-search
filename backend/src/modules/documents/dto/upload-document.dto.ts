@@ -3,11 +3,11 @@ import {
   ArrayMaxSize, IsArray, IsNotEmpty, IsOptional, IsString, MaxLength,
 } from 'class-validator';
 
-const trim = ({ value }: { value: unknown }) =>
+export const trim = ({ value }: { value: unknown }) =>
   typeof value === 'string' ? value.trim() : value;
 
 // Acepta "a,b,c" (multipart) o un arreglo; normaliza a minúsculas y elimina duplicados
-const toTagList = ({ value }: { value: unknown }) => {
+export const toTagList = ({ value }: { value: unknown }) => {
   const raw = Array.isArray(value) ? value : typeof value === 'string' ? value.split(',') : [];
   return [...new Set(raw.map((t) => String(t).trim().toLowerCase()).filter(Boolean))];
 };

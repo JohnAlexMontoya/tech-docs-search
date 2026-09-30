@@ -67,3 +67,16 @@ export interface ApiError {
   path: string;
   timestamp: string;
 }
+
+export interface DocumentListItemDto {
+  id: string;
+  title: string;
+  author: string;
+  version: string;
+  category: string;
+  tags: string[];
+  status: DocumentStatus;
+  errorMessage: string | null;
+  createdAt: string;
+  indexedAt: string | null;
+}
