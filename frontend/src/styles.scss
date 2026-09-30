@@ -1,1 +1,107 @@
+@use '@angular/material' as mat;
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light;
+
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin.
+  margin: 0;
+  height: 100%;
+}
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light;
+
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin.
+  margin: 0;
+  height: 100%;
+}
 /* You can add global styles to this file, and also import other style files */
+
+/* ---------- Estilos globales de la app ---------- */
+:root {
+  --app-bg: #f6f7fb;
+  --app-surface: #ffffff;
+  --app-border: #e3e6ee;
+  --app-text-muted: #5f6675;
+  --app-accent: #2f4dbf;
+}
+
+html, body { height: 100%; }
+body { margin: 0; background: var(--app-bg); font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+.page { display: flex; flex-direction: column; gap: 16px; }
+.page-header h1 { margin: 0 0 4px; font-size: 1.6rem; }
+.page-header p { margin: 0; color: var(--app-text-muted); }
+.card { background: var(--app-surface); border: 1px solid var(--app-border); border-radius: 12px; padding: 20px; }
+
+.muted { color: var(--app-text-muted); font-size: .9rem; }
+.hint { color: var(--app-text-muted); font-size: .85rem; margin: 0 0 8px; }
+.error { color: #a4262c; }
+.empty { text-align: center; color: var(--app-text-muted); padding: 48px 16px; }
+.empty mat-icon { font-size: 48px; width: 48px; height: 48px; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { background: #eef1fb; color: #2f3d8f; border-radius: 999px; padding: 2px 10px; font-size: .8rem; }
+
+mark { background: #fff1a8; color: inherit; padding: 0 2px; border-radius: 3px; }
+
+.snack-error .mdc-snackbar__surface { background: #a4262c !important; }
