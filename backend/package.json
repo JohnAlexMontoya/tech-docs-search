@@ -18,7 +18,7 @@
     "test:watch": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --watch",
     "test:cov": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage",
     "test:debug": "node --inspect-brk --experimental-vm-modules -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --config ./test/jest-e2e.json",
+    "test:e2e": "DATABASE_NAME=docs_test REDIS_DB=1 UPLOAD_DIR=./storage-test WORKER_CONCURRENCY=2 node --experimental-vm-modules ./node_modules/jest/bin/jest.js --rootDir . --roots \"<rootDir>/test\" --testRegex \".*\\.e2e-spec\\.ts$\" --runInBand --testTimeout 30000",
     "typeorm": "typeorm-ts-node-commonjs -d src/config/data-source.ts",
     "migration:run": "pnpm typeorm migration:run",
     "migration:revert": "pnpm typeorm migration:revert",
